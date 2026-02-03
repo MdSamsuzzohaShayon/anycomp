@@ -1,10 +1,10 @@
 // src/services/user.service.ts
 import { Repository } from "typeorm";
 import { AppDataSource } from "../data-source";
-import { User, UserRole } from "../entities/User";
+import { User } from "../entities/User";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { JwtPayload } from "../types/auth";
+import { JwtPayload, UserRole } from "../types/auth";
 
 const JWT_SECRET = process.env.JWT_SECRET || "secret";
 

@@ -7,8 +7,9 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
 } from "typeorm";
+import { UserRole } from "../types/auth";
 
-export type UserRole = "admin" | "specialist" | "user";
+
 
 @Entity("users")
 export class User {

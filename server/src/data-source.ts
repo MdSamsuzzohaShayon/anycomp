@@ -2,9 +2,11 @@ import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { env } from "./config/env";
 import { Specialist } from "./entities/Specialist";
+import { User } from "./entities/User";
 import { Media } from "./entities/Media";
 import { PlatformFee } from "./entities/PlatformFee";
 import { ServiceOffering } from "./entities/ServiceOffering";
+import { ServiceOfferingMasterList } from "./entities/ServiceOfferingMasterList";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -15,5 +17,5 @@ export const AppDataSource = new DataSource({
   database: env.db.name,
   synchronize: true, // ❗ false in production
   logging: false,
-  entities: [Specialist, Media, PlatformFee, ServiceOffering],
+  entities: [User, Specialist, Media, PlatformFee, ServiceOffering, ServiceOfferingMasterList],
 });

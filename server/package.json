@@ -10,14 +10,20 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "lint": "eslint . --ext .ts",
-    "format": "prettier --write 'src/**/*.ts'"
+    "format": "prettier --write 'src/**/*.ts'",
+    "seed": "ts-node src/seeders/run-seeders.ts seed",
+    "seed:truncate": "ts-node src/seeders/run-seeders.ts truncate",
+    "seed:refresh": "ts-node src/seeders/run-seeders.ts refresh",
+    "seed:specific": "ts-node src/seeders/run-seeders.ts specific"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.19",
     "@types/jsonwebtoken": "^9.0.10",
     "bcryptjs": "^3.0.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.3",
+    "cors": "^2.8.6",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
