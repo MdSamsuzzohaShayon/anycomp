@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const specialist_routes_1 = __importDefault(require("./specialist.routes"));
+const user_routes_1 = __importDefault(require("./user.routes"));
+const media_routes_1 = __importDefault(require("./media.routes"));
+const platform_fee_routes_1 = __importDefault(require("./platform-fee.routes"));
+const service_offering_routes_1 = __importDefault(require("./service-offering.routes"));
+const service_offering_master_routes_1 = __importDefault(require("./service-offering-master.routes"));
+const router = (0, express_1.Router)();
+router.use("/specialists", specialist_routes_1.default);
+router.use("/users", user_routes_1.default);
+router.use("/media", media_routes_1.default);
+router.use("/platform-fee", platform_fee_routes_1.default);
+router.use("/service-offerings", service_offering_routes_1.default);
+router.use("/service-offering-masters", service_offering_master_routes_1.default);
+exports.default = router;

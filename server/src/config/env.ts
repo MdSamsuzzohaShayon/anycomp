@@ -4,6 +4,7 @@ dotenv.config();
 export const env = {
   port: process.env.PORT || 4000,
   frontend_url: process.env.FRONTEND_URL || "http://localhost:3000",
+  node_env: process.env.NODE_ENV || "development",
   db: {
     host: process.env.DB_HOST!,
     port: Number(process.env.DB_PORT),
