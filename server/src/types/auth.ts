@@ -1,13 +1,16 @@
 // src/types/auth.ts
+
+export type UserRole = "admin" | "specialist" | "user";
+
 export interface JwtPayload {
     userId: string;
-    role: "admin" | "specialist" | "user";
+    role: UserRole;
   }
   
   export interface RegisterInput {
     email: string;
     password: string;
-    role?: "admin" | "specialist" | "user";
+    role?: UserRole;
   }
   
   export interface LoginInput {
