@@ -11,7 +11,7 @@ interface NavbarProps {
   onSearchChange: (value: string) => void;
   user: IUser | null;
   isLoggedIn: boolean;
-  onLogout?: () => void;
+  onLogout?: (e: React.SyntheticEvent) => void;
 }
 
 // Subcomponent for Desktop Navigation Links
@@ -33,21 +33,22 @@ const DesktopNavigation: FC = () => (
   </nav>
 );
 
-// Subcomponent for Mobile Navigation Menu
+
 interface MobileNavigationProps {
   isOpen: boolean;
   onClose: () => void;
   isLoggedIn: boolean;
   user: IUser | null;
-  onLogout?: () => void;
+  onLogout?: (e: React.SyntheticEvent) => void;
 }
 
-const MobileNavigation: FC<MobileNavigationProps> = ({ 
-  isOpen, 
-  onClose, 
-  isLoggedIn, 
-  user, 
-  onLogout 
+
+const MobileNavigation: FC<MobileNavigationProps> = ({
+  isOpen,
+  onClose,
+  isLoggedIn,
+  user,
+  onLogout
 }) => {
   if (!isOpen) return null;
 
@@ -56,30 +57,30 @@ const MobileNavigation: FC<MobileNavigationProps> = ({
       <div className="container mx-auto px-4 sm:px-6 py-4">
         {/* Mobile navigation links */}
         <nav className="flex flex-col gap-3 mb-4">
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className="text-black font-['Proxima_Nova'] font-semibold text-sm py-2 hover:text-blue-600 transition-colors"
             onClick={onClose}
           >
             Register a company
           </Link>
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className="text-black font-['Proxima_Nova'] font-semibold text-sm py-2 hover:text-blue-600 transition-colors"
             onClick={onClose}
           >
             Appoint a Company Secretary
           </Link>
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className="text-black font-['Proxima_Nova'] font-semibold text-sm py-2 hover:text-blue-600 transition-colors flex items-center justify-between"
             onClick={onClose}
           >
             Company Secretarial Services
             <ChevronDown size={14} className="text-gray-500" />
           </Link>
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className="text-black font-['Proxima_Nova'] font-semibold text-sm py-2 hover:text-blue-600 transition-colors"
             onClick={onClose}
           >
@@ -99,18 +100,18 @@ const MobileNavigation: FC<MobileNavigationProps> = ({
             </Link>
             <div className="flex items-center justify-between py-2">
               <div className="flex items-center gap-3">
-                <Image 
-                  src="/man.jpeg" 
-                  height={32} 
-                  width={32} 
-                  className="w-8 h-8 rounded-full object-cover" 
-                  alt="User profile" 
+                <Image
+                  src="/man.jpeg"
+                  height={32}
+                  width={32}
+                  className="w-8 h-8 rounded-full object-cover"
+                  alt="User profile"
                 />
                 <span className="text-sm text-gray-600 font-medium">{user.email || "User"}</span>
               </div>
               <button
-                onClick={() => {
-                  onLogout?.();
+                onClick={(e) => {
+                  onLogout?.(e);
                   onClose();
                 }}
                 className="flex items-center gap-2 px-3 py-1.5 text-sm text-red-600 hover:bg-red-50 rounded transition-colors"
@@ -124,7 +125,7 @@ const MobileNavigation: FC<MobileNavigationProps> = ({
           <div className="border-t border-gray-200 pt-3">
             <Link
               href="/login"
-              className="block px-4 py-2.5 text-center text-white bg-blue-600 hover:bg-blue-700 rounded transition-colors font-medium"
+              className="block bg-[#002F70] hover:bg-blue-700 transition-colors px-4 py-1 rounded-xs flex items-center justify-center text-white"
               onClick={onClose}
             >
               Login
@@ -135,6 +136,8 @@ const MobileNavigation: FC<MobileNavigationProps> = ({
     </div>
   );
 };
+
+
 
 // Subcomponent for Search Bar
 interface SearchBarProps {
@@ -154,8 +157,8 @@ const SearchBar: FC<SearchBarProps> = ({ value, onChange, isMobile = false }) =>
           placeholder="Search for any services"
           className="px-3 py-2.5 text-sm text-gray-700 outline-none bg-white placeholder-gray-400 flex-1"
         />
-        <button 
-          type="button" 
+        <button
+          type="button"
           className="bg-[#002F70] hover:bg-blue-700 transition-colors px-3 flex items-center justify-center"
           aria-label="Search"
         >
@@ -175,8 +178,8 @@ const SearchBar: FC<SearchBarProps> = ({ value, onChange, isMobile = false }) =>
         className="px-3 py-1.5 text-[13px] text-gray-700 outline-none bg-white placeholder-gray-400"
         style={{ width: 195 }}
       />
-      <button 
-        type="button" 
+      <button
+        type="button"
         className="bg-[#002F70] hover:bg-blue-700 transition-colors px-2.5 flex items-center justify-center"
         aria-label="Search"
       >
@@ -191,7 +194,7 @@ interface UserDropdownProps {
   user: IUser;
   isOpen: boolean;
   onClose: () => void;
-  onLogout?: () => void;
+  onLogout?: (e: React.SyntheticEvent) => void;
 }
 
 const UserDropdown: FC<UserDropdownProps> = ({ user, isOpen, onClose, onLogout }) => {
@@ -216,7 +219,7 @@ const UserDropdown: FC<UserDropdownProps> = ({ user, isOpen, onClose, onLogout }
   if (!isOpen) return null;
 
   return (
-    <div 
+    <div
       ref={dropdownRef}
       className="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50 animate-fadeIn"
     >
@@ -224,7 +227,7 @@ const UserDropdown: FC<UserDropdownProps> = ({ user, isOpen, onClose, onLogout }
         <p className="text-sm font-medium text-gray-900">{user.email || "User"}</p>
         <p className="text-xs text-gray-500 truncate">{user.email || ""}</p>
       </div>
-      
+
       <Link
         href="/specialists"
         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
@@ -232,11 +235,11 @@ const UserDropdown: FC<UserDropdownProps> = ({ user, isOpen, onClose, onLogout }
       >
         Dashboard
       </Link>
-      
+
       <div className="border-t border-gray-100 mt-2 pt-2">
         <button
-          onClick={() => {
-            onLogout?.();
+          onClick={(e) => {
+            onLogout?.(e);
             onClose();
           }}
           className="w-full flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
@@ -270,12 +273,12 @@ const MobileMenuButton: FC<MobileMenuButtonProps> = ({ isOpen, onClick }) => (
   </button>
 );
 
-const Navbar: FC<NavbarProps> = ({ 
-  search, 
-  onSearchChange, 
-  user, 
+const Navbar: FC<NavbarProps> = ({
+  search,
+  onSearchChange,
+  user,
   isLoggedIn,
-  onLogout 
+  onLogout
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState<boolean>(false);
@@ -302,19 +305,19 @@ const Navbar: FC<NavbarProps> = ({
         <div className="flex items-center justify-between py-4 min-h-[45px]">
           {/* Left section: Menu button, Logo and Desktop Navigation */}
           <div className="flex items-center gap-3 sm:gap-6">
-            <MobileMenuButton 
-              isOpen={isMobileMenuOpen} 
-              onClick={toggleMobileMenu} 
+            <MobileMenuButton
+              isOpen={isMobileMenuOpen}
+              onClick={toggleMobileMenu}
             />
-            
+
             {/* Logo */}
             <Link href="/" className="flex-shrink-0" onClick={closeAllMenus}>
-              <Image 
-                src="/logo.png" 
-                height={100} 
-                width={100} 
-                className="w-28" 
-                alt="Anycomp logo" 
+              <Image
+                src="/logo.png"
+                height={100}
+                width={100}
+                className="w-28"
+                alt="Anycomp logo"
                 priority
               />
             </Link>
@@ -353,16 +356,16 @@ const Navbar: FC<NavbarProps> = ({
                   aria-label="User menu"
                   aria-expanded={isUserDropdownOpen}
                 >
-                  <Image 
-                    src="/man.jpeg" 
-                    height={24} 
-                    width={24} 
-                    className="w-6 h-6 rounded-full object-cover border border-gray-300" 
-                    alt="User profile" 
+                  <Image
+                    src="/man.jpeg"
+                    height={24}
+                    width={24}
+                    className="w-6 h-6 rounded-full object-cover border border-gray-300"
+                    alt="User profile"
                   />
                 </button>
-                
-                <UserDropdown 
+
+                <UserDropdown
                   user={user}
                   isOpen={isUserDropdownOpen}
                   onClose={() => setIsUserDropdownOpen(false)}
@@ -373,7 +376,7 @@ const Navbar: FC<NavbarProps> = ({
               // Login button for desktop when not logged in
               <Link
                 href="/login"
-                className="hidden sm:block px-4 py-1.5 text-sm text-white bg-blue-600 hover:bg-blue-700 rounded transition-colors font-medium"
+                className="hidden md:block bg-[#002F70] hover:bg-blue-700 transition-colors px-4 py-1 rounded-xs flex items-center justify-center text-white"
                 onClick={closeAllMenus}
               >
                 Login
@@ -388,14 +391,16 @@ const Navbar: FC<NavbarProps> = ({
         </div>
       </div>
 
+
       {/* Mobile Navigation Menu */}
-      <MobileNavigation 
+      <MobileNavigation
         isOpen={isMobileMenuOpen}
         onClose={closeAllMenus}
         isLoggedIn={isLoggedIn}
         user={user}
         onLogout={onLogout}
       />
+
     </header>
   );
 };

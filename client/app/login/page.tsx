@@ -27,7 +27,6 @@ export default function LoginPage() {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     
-    // Clear error when user starts typing
     if (formErrors[name as keyof typeof formErrors]) {
       setFormErrors((prev) => ({ ...prev, [name]: '' }));
     }
@@ -69,10 +68,9 @@ export default function LoginPage() {
     } else {
       error(result.error || 'Login failed. Please check your credentials.');
     }
-
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     const token = localStorage.getItem('token');
     if(token){
         router.push('/specialists');
@@ -82,11 +80,25 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
-        {/* Logo/Brand */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 mb-4">
-            <LogIn className="w-8 h-8 text-white" />
-          </div>
+
+        {/* Logo & Home Link */}
+        <div className="flex items-center justify-between mb-8">
+          <Link href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center">
+              <LogIn className="w-6 h-6 text-white" />
+            </div>
+            <span className="text-xl font-bold text-gray-900">Anycomp</span>
+          </Link>
+          <Link
+            href="/"
+            className="text-sm text-[#002F70] hover:text-blue-800 hover:underline transition-colors"
+          >
+            Back to Home
+          </Link>
+        </div>
+
+        {/* Page Heading */}
+        <div className="text-center mb-6">
           <h1 className="text-3xl font-bold text-gray-900">Welcome Back</h1>
           <p className="text-gray-600 mt-2">Sign in to your account to continue</p>
         </div>
@@ -148,7 +160,7 @@ export default function LoginPage() {
             </div>
           </div>
 
-          {/* Social Login (Optional) */}
+          {/* Social Login */}
           <div className="space-y-3">
             <Button
               type="button"
@@ -187,7 +199,6 @@ export default function LoginPage() {
           <p className="mt-2">© 2024 Your Company. All rights reserved.</p>
         </div>
       </div>
-
     </div>
   );
 }

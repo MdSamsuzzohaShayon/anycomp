@@ -116,6 +116,14 @@ const SpecialistsPage: FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const { error } = useToast();
 
+  const handleLogout=(e: React.SyntheticEvent)=>{
+    e.preventDefault();
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    window.location.reload();
+
+  }
+
   // Check user authentication from localStorage
   useEffect(() => {
     try {
@@ -187,6 +195,7 @@ const SpecialistsPage: FC = () => {
         onSearchChange={setSearch}
         user={user}
         isLoggedIn={isLoggedIn}
+        onLogout={handleLogout}
       />
 
       {/* ════════════════════════════ BODY ═════════════════════════════ */}
