@@ -3,17 +3,16 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Mail, Lock, LogIn } from 'lucide-react';
-import { useAuth } from '../hooks/useAuth';
-import { useToast } from '../hooks/useToast';
-import { ToastContainer } from '../components/ul/Toast';
-import FormField from '../components/ul/FormField';
-import Button from '../components/ul/Button';
+import { LogIn } from 'lucide-react';
+import { useAuth } from '../../hooks/useAuth';
+import FormField from '../../components/ul/FormField';
+import Button from '../../components/ul/Button';
+import { useToast } from '@/lib/ToastContext';
 
 export default function LoginPage() {
   const router = useRouter();
   const { login, isLoading } = useAuth();
-  const { toasts, success, error, removeToast } = useToast();
+  const { success, error } = useToast();
   
   const [formData, setFormData] = useState({
     email: '',
@@ -58,7 +57,7 @@ export default function LoginPage() {
     return isValid;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     
     if (!validateForm()) return;
@@ -70,6 +69,7 @@ export default function LoginPage() {
     } else {
       error(result.error || 'Login failed. Please check your credentials.');
     }
+
   };
 
   useEffect(()=>{
@@ -188,8 +188,6 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* Toast Notifications */}
-      <ToastContainer toasts={toasts} onClose={removeToast} />
     </div>
   );
 }

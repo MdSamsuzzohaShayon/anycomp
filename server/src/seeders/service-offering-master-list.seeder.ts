@@ -16,45 +16,50 @@ export class ServiceOfferingMasterListSeeder extends BaseSeeder {
 
     const masterServices = [
       {
-        title: "Initial Consultation",
-        description: "Understanding requirements, scope, and technical feasibility.",
+        title: "Company Secretary Subscription",
+        description: "Enjoy 1 month free Company Secretary Subscription",
+        // image: human icon 
       },
       {
-        title: "Project Setup & Architecture",
-        description: "Project bootstrapping, system design, and architecture planning.",
+        title: "Opening of a Bank Account",
+        description: "Complimentary Corporate Bank Account Opening",
+        // image: bank icon 
       },
       {
-        title: "Core Development",
-        description: "Implementation of core features and business logic.",
+        title: "Access Company Records and SSM Forms",
+        description: "24/7 Secure Access to Statutory Company Records",
+        // image: record icon 
       },
       {
-        title: "Testing & Quality Assurance",
-        description: "Unit tests, integration tests, and overall quality checks.",
+        title: "Priority Filling",
+        description: "Documents are prioritized for submission and swift processing - within 24 hours",
+        // image: Light icon 
       },
       {
-        title: "Deployment & Launch",
-        description: "Production deployment, CI/CD setup, and release support.",
+        title: "Registered Office Address Use",
+        description: "Use of SSM-Compliant Registered Office Address with Optional Mail Forwarding",
+        // image: Location icon 
       },
       {
-        title: "Maintenance & Support",
-        description: "Ongoing bug fixes, updates, and technical support.",
+        title: "Compliance Calendar Setup",
+        description: "Get automated reminders for all statutory deadlines",
+        // image: Calender icon 
       },
       {
-        title: "Code Review",
-        description: "Reviewing code quality, security, and best practices.",
+        title: "First Share Certificate Issued Free",
+        description: "Receive your company’s first official share certificate at no cost ",
+        // image: Badge icon 
       },
       {
-        title: "Performance Optimization",
-        description: "Improving speed, scalability, and resource usage.",
+        title: "CTC Delivery & Courier Handling",
+        description: "Have your company documents and certified copies delivered securely to you",
+        // image: Car icon 
       },
       {
-        title: "Security Audit",
-        description: "Identifying vulnerabilities and improving system security.",
-      },
-      {
-        title: "Training & Documentation",
-        description: "Knowledge transfer, onboarding, and technical documentation.",
-      },
+        title: "Chat Support",
+        description: "Always-On Chat Support for Compliance, Filing, and General Queries",
+        // image: Headphone icon 
+      }
     ];
 
     const masters = masterServices.map(service =>

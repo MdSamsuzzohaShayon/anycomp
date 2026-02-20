@@ -10,6 +10,12 @@ import {
 import { Media } from "./Media";
 import { ServiceOffering } from "./ServiceOffering";
 
+export enum ESpecialistVerificationStatus {
+  PENDING = "pending",
+  APPROVED = "approved",
+  REJECTED = "rejected",
+}
+
 @Entity("specialists")
 export class Specialist {
   @PrimaryGeneratedColumn("uuid")
@@ -36,14 +42,18 @@ export class Specialist {
   @Column("decimal")
   base_price!: number;
 
-  @Column("decimal")
+  @Column({ type: "decimal", default: 0 })
   platform_fee!: number;
 
   @Column("decimal")
   final_price!: number;
 
-  @Column({ type: "enum", enum: ["pending", "approved", "rejected"] })
-  verification_status!: string;
+  @Column({
+    type: "enum",
+    enum: ESpecialistVerificationStatus,
+    default: ESpecialistVerificationStatus.PENDING,
+  })
+  verification_status!: ESpecialistVerificationStatus;
 
   @Column({ default: false })
   is_verified!: boolean;

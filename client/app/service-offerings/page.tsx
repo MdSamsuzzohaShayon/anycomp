@@ -5,21 +5,21 @@ import { Search, Plus, Download } from 'lucide-react';
 import { 
   IServiceOfferingMasterList, 
   IServiceOffering 
-} from '../types';
-import PublishConfirmationModal from '../components/PublishConfirmationModal';
-import { useToast } from '../hooks/useToast';
-import { ServiceOfferingMasterApiService } from '../api/service-offering-master.api';
-import { ApiError } from '../api/apiClient';
-import { ServiceOfferingApiService } from '../api/service-offering.api';
-import Loader from '../components/ul/Loader';
-import { ToastContainer } from '../components/ul/Toast';
-import CreateServiceMasterPanel from '../components/CreateServiceMasterPanel';
-import EditServiceMasterPanel from '../components/EditServiceMasterPanel';
-import Sidebar from '../components/dashboard/Sidebar';
-import PageHeader from '../components/dashboard/PageHeader';
-import ServiceTableRow, { ServiceMobileCard } from '../components/ServiceTableRow';
-import Pagination from '../components/ul/Pagination';
+} from '../../types';
+import PublishConfirmationModal from '../../components/PublishConfirmationModal';
+import { ServiceOfferingMasterApiService } from '../../api/service-offering-master.api';
+import { ApiError } from '../../api/apiClient';
+import { ServiceOfferingApiService } from '../../api/service-offering.api';
+import Loader from '../../components/ul/Loader';
+import { ToastContainer } from '../../components/ul/Toast';
+import CreateServiceMasterPanel from '../../components/CreateServiceMasterPanel';
+import EditServiceMasterPanel from '../../components/EditServiceMasterPanel';
+import Sidebar from '../../components/dashboard/Sidebar';
+import PageHeader from '../../components/dashboard/PageHeader';
+import ServiceTableRow, { ServiceMobileCard } from '../../components/ServiceTableRow';
+import Pagination from '../../components/ul/Pagination';
 import { useRouter } from 'next/navigation';
+import { useToast } from '@/lib/ToastContext';
 
 
 
@@ -414,9 +414,6 @@ export default function ServiceMasterPage() {
         isPublishing={isPublishing}
         specialistTitle={publishingService?.title || ''}
       />
-
-      {/* Toast Notifications */}
-      <ToastContainer toasts={toasts} onClose={removeToast} />
     </div>
   );
 }

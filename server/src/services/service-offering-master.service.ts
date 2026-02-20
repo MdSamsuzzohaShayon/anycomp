@@ -20,6 +20,7 @@ export class ServiceOfferingMasterService {
     bucket_name: string;
     service_offerings?: string[];
   }) {
+    
     const { service_offerings, ...masterData } = data;
 
     // 1️⃣ Create master first

@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { UserPlus, Mail, Lock, User, Building } from 'lucide-react';
-import { useAuth } from '../hooks/useAuth';
-import { useToast } from '../hooks/useToast';
-import FormField from '../components/ul/FormField';
-import Button from '../components/ul/Button';
-import { ToastContainer } from '../components/ul/Toast';
+import { UserPlus } from 'lucide-react';
+import { useAuth } from '../../hooks/useAuth';
+import FormField from '../../components/ul/FormField';
+import Button from '../../components/ul/Button';
+import { ToastContainer } from '../../components/ul/Toast';
 import { useRouter } from 'next/navigation';
+import { useToast } from '@/lib/ToastContext';
 
 export default function RegisterPage() {
     const router = useRouter();
@@ -255,9 +255,6 @@ export default function RegisterPage() {
                     <p className="mt-2">© 2024 Your Company. All rights reserved.</p>
                 </div>
             </div>
-
-            {/* Toast Notifications */}
-            <ToastContainer toasts={toasts} onClose={removeToast} />
         </div>
     );
 }

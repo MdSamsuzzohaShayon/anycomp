@@ -9,7 +9,7 @@ import {
 } from "typeorm";
 import { UserRole } from "../types/auth";
 
-
+// Add name and image
 
 @Entity("users")
 export class User {

@@ -3,18 +3,17 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Mail, ArrowLeft, CheckCircle } from 'lucide-react';
-import { useAuth } from '../hooks/useAuth';
-import { useToast } from '../hooks/useToast';
-import Button from '../components/ul/Button';
-import FormField from '../components/ul/FormField';
-import { ToastContainer } from '../components/ul/Toast';
+import { useAuth } from '../../hooks/useAuth';
+import Button from '../../components/ul/Button';
+import FormField from '../../components/ul/FormField';
 import { useRouter } from 'next/navigation';
+import { useToast } from '@/lib/ToastContext';
 
 
 export default function ForgotPasswordPage() {
   const router = useRouter();
   const { forgotPassword, isLoading } = useAuth();
-  const { toasts, success, error, removeToast } = useToast();
+  const { success, error } = useToast();
   
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -199,9 +198,6 @@ export default function ForgotPasswordPage() {
           <p className="mt-2">© 2024 Your Company. All rights reserved.</p>
         </div>
       </div>
-
-      {/* Toast Notifications */}
-      <ToastContainer toasts={toasts} onClose={removeToast} />
     </div>
   );
 }

@@ -10,6 +10,7 @@ import { authenticate } from "../middleware/auth";
 
 const router = Router();
 
+// authenticate
 router.post("/", authenticate, createSpecialist);
 router.get("/", getSpecialists);
 router.get("/:id", getSpecialistById);
