@@ -6,7 +6,6 @@ import { UserPlus } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 import FormField from '../../components/ul/FormField';
 import Button from '../../components/ul/Button';
-import { ToastContainer } from '../../components/ul/Toast';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/lib/ToastContext';
 

@@ -4,6 +4,7 @@ import { IStatusBadgeProps, PublishStatus } from "@/types";
 const PUBLISH_STATUS_STYLES: Record<PublishStatus, string> = {
     'published': 'bg-green-500 text-white',
     'not_published': 'bg-red-500 text-white',
+    'approval': 'bg-yellow-500 text-white',
 };
 
 // Status Badge Component
