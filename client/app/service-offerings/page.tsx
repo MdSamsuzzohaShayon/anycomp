@@ -11,7 +11,6 @@ import { ServiceOfferingMasterApiService } from '../../api/service-offering-mast
 import { ApiError } from '../../api/apiClient';
 import { ServiceOfferingApiService } from '../../api/service-offering.api';
 import Loader from '../../components/ul/Loader';
-import { ToastContainer } from '../../components/ul/Toast';
 import CreateServiceMasterPanel from '../../components/CreateServiceMasterPanel';
 import EditServiceMasterPanel from '../../components/EditServiceMasterPanel';
 import Sidebar from '../../components/dashboard/Sidebar';
@@ -163,7 +162,8 @@ export default function ServiceMasterPage() {
     setOpenMenuId(null);
   };
 
-  const handleConfirmPublish = async () => {
+  const handleConfirmPublish = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
     if (!publishingService) return;
 
     try {
@@ -412,7 +412,7 @@ export default function ServiceMasterPage() {
         }}
         onConfirm={handleConfirmPublish}
         isPublishing={isPublishing}
-        specialistTitle={publishingService?.title || ''}
+        // specialistTitle={publishingService?.title || ''}
       />
     </div>
   );
